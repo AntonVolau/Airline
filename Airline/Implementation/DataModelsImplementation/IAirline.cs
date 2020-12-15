@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace Airline.Implementation.Airline
+namespace Airline.Implementation.DataModelsImplementation
 {
     public interface IAirline<SpaceVehicle>
     {
@@ -50,6 +49,6 @@ namespace Airline.Implementation.Airline
         /// <returns>List<SpaceVehicle></returns>
         List<SpaceVehicle> SearchByName(string nameToSearch);
 
-        List<SpaceVehicle> SearchByFuelConsumption(decimal minimumFuelConsumption, decimal MaximumFuelConsumption);
+        List<SpaceVehicle> SearchByFuelConsumption(decimal minimumFuelConsumption, decimal maximumFuelConsumption);
     }
 }

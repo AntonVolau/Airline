@@ -1,15 +1,17 @@
-﻿using System;
+﻿using Airline.Implementation.DataModelsImplementation.ShipsImplementation;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
-namespace Airline.Implementation.Airline.DataModelsImplementation
+namespace Airline.Implementation.DataModelsImplementation.AirlineImplementation
 {
     class Airline<SpaceVehicle> : IAirline<ISpaceVehicle>, IEnumerable<ISpaceVehicle>
     {
         /// <summary>
         /// Total list of available vehicles
         /// </summary>
-        private readonly List<ISpaceVehicle> SpaceVehicles = new List<ISpaceVehicle>();
+        private List<ISpaceVehicle> SpaceVehicles = new List<ISpaceVehicle>();
 
         public string Name { get; set; }
         public Guid Id => Guid.NewGuid();
@@ -64,15 +66,7 @@ namespace Airline.Implementation.Airline.DataModelsImplementation
 
         public void AscendingSortByFlightRange()
         {
-            for (int i = 0; i < SpaceVehicles.Count - 2; i++)
-            {
-                if (SpaceVehicles[i].MaximumFlightRange > SpaceVehicles[i + 1].MaximumFlightRange)
-                {
-                    ISpaceVehicle temp = SpaceVehicles[i];
-                    SpaceVehicles[i] = SpaceVehicles[i + 1];
-                    SpaceVehicles[i + 1] = temp;
-                }
-            }
+            SpaceVehicles = SpaceVehicles.OrderBy(x => x.MaximumFlightRange).ToList();
         }
 
         public IEnumerator<ISpaceVehicle> GetEnumerator()
@@ -85,12 +79,12 @@ namespace Airline.Implementation.Airline.DataModelsImplementation
             return GetEnumerator();
         }
 
-        public List<ISpaceVehicle> SearchByFuelConsumption(decimal minimumFuelConsumption, decimal MaximumFuelConsumption)
+        public List<ISpaceVehicle> SearchByFuelConsumption(decimal minimumFuelConsumption, decimal maximumFuelConsumption)
         {
             List<ISpaceVehicle> searchedShips = new List<ISpaceVehicle>();
             foreach (ISpaceVehicle ship in SpaceVehicles)
             {
-                if (ship.FuelConsumption >= minimumFuelConsumption && ship.FuelConsumption <= MaximumFuelConsumption)
+                if (ship.FuelConsumption >= minimumFuelConsumption && ship.FuelConsumption <= maximumFuelConsumption)
                 {
                     searchedShips.Add(ship);
                 }

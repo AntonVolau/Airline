@@ -1,13 +1,11 @@
 ﻿using Airline.Implementation.Enum;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Airline.Implementation.Airline.DataModelsImplementation
+namespace Airline.Implementation.DataModelsImplementation.ShipsImplementation.BattleStations
 {
-    class SpaceStation : ISpaceVehicle
+    class DeathStar : ISpaceVehicle
     {
-        public string ModelName => "Death Star";
+        public string ModelName { get; internal set; } = "Death Star";
 
         public decimal MaximumFlightRange => 1500;
 
