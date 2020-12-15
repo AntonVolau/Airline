@@ -35,6 +35,10 @@ namespace Airline
             {
                 int minimumFuelConsumption = Int32.Parse(Console.ReadLine()); // minimal fuel consumption
                 int maximumFuelConsumption = Int32.Parse(Console.ReadLine()); // maximum fuel consumption
+                if (minimumFuelConsumption < 0 || maximumFuelConsumption < 0 || minimumFuelConsumption > maximumFuelConsumption)
+                {
+                    throw new ArgumentException();
+                }
                 Console.WriteLine($"_________________Ships list with fuel consumption from {minimumFuelConsumption} to {maximumFuelConsumption}_________________");
                 List<ISpaceVehicle> shipsByFuelConsumption = airline.SearchByFuelConsumption(minimumFuelConsumption, maximumFuelConsumption);
                 foreach (ISpaceVehicle ship in shipsByFuelConsumption)
