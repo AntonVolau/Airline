@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Airline.Implementation.Starships;
+using System;
 using System.Collections.Generic;
 
 namespace Airline.Implementation.DataModelsImplementation
 {
-    public interface IAirline<SpaceVehicle>
+    public interface IAirline
     {
         /// <summary>
         /// Personal ID of a company
@@ -40,15 +41,15 @@ namespace Airline.Implementation.DataModelsImplementation
         /// </summary>
         /// <param name="vehiclePosition"></param>
         /// <returns>SpaceVehicle</returns>
-        SpaceVehicle GetVehicle(int vehiclePosition);
+        ISpaceVehicle GetVehicle(int vehiclePosition);
 
         /// <summary>
         /// Method to seatch for a specific vehicle by name
         /// </summary>
         /// <param name="nameToSearch"></param>
         /// <returns>List<SpaceVehicle></returns>
-        List<SpaceVehicle> SearchByName(string nameToSearch);
+        List<ISpaceVehicle> SearchByName(string nameToSearch);
 
-        List<SpaceVehicle> SearchByFuelConsumption(decimal minimumFuelConsumption, decimal maximumFuelConsumption);
+        List<ISpaceVehicle> SearchByFuelConsumption(decimal minimumFuelConsumption, decimal maximumFuelConsumption);
     }
 }

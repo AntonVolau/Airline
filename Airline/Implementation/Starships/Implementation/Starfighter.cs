@@ -1,8 +1,7 @@
-﻿using Airline.Implementation.DataModelsImplementation.ShipsImplementation;
-using Airline.Implementation.Enum;
+﻿using Airline.Implementation.Enums;
 using System;
 
-namespace Airline.Implementation.DataModelsImplementation.ShipsImplementation.StarFighters
+namespace Airline.Implementation.Starships.Implementation
 {
     class Starfighter : ISpaceVehicle
     {
@@ -14,12 +13,12 @@ namespace Airline.Implementation.DataModelsImplementation.ShipsImplementation.St
 
         public virtual int Weight { get; set; } = 350;
 
+        public virtual int PassengerCount { get; set; } = 1;
+
+        public virtual double LiftingCapacity { get; set; } = 200; 
+        
         public VehicleType TypeofVehicle => VehicleType.StarFighter;
 
         public Guid SerialNumber => Guid.NewGuid();
-
-        public virtual int PassengerCount => 1;
-
-        public virtual double LiftingCapacity => 200;
     }
 }

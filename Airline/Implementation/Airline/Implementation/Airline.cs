@@ -1,12 +1,13 @@
-﻿using Airline.Implementation.DataModelsImplementation.ShipsImplementation;
+﻿using Airline.Implementation.DataModelsImplementation;
+using Airline.Implementation.Starships;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Airline.Implementation.DataModelsImplementation.AirlineImplementation
+namespace Airline.Implementation.Airline.Implementation
 {
-    class Airline<SpaceVehicle> : IAirline<ISpaceVehicle>, IEnumerable<ISpaceVehicle>
+    class Airline : IAirline, IEnumerable<ISpaceVehicle>
     {
         /// <summary>
         /// Total list of available vehicles

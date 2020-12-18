@@ -1,11 +1,11 @@
-﻿using Airline.Implementation.DataModelsImplementation.ShipsImplementation;
-using Airline.Implementation.Enum;
+﻿using Airline.Implementation.Enums;
 using System;
 
-namespace Airline.Implementation.Airline.DataModelsImplementation.ShipsImplementation.StarCruisers
+namespace Airline.Implementation.Starships.Implementation
 {
     class StarCruiser : ISpaceVehicle
     {
+        internal virtual int NumberOfStarfighters { get; set; }
         public string ModelName { get; internal set; } = "Venator";
 
         public decimal MaximumFlightRange { get; internal set; } = 20000;

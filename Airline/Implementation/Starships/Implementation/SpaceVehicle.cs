@@ -1,9 +1,9 @@
-﻿using Airline.Implementation.Enum;
+﻿using Airline.Implementation.Enums;
 using System;
 
-namespace Airline.Implementation.DataModelsImplementation.ShipsImplementation.VehicleConstruction
+namespace Airline.Implementation.Starships.Implementation
 {
-    abstract class SpaceVehicle : ISpaceVehicle
+    public abstract class SpaceVehicle : ISpaceVehicle
     {
         public abstract string ModelName { get; set; }
 
@@ -13,12 +13,11 @@ namespace Airline.Implementation.DataModelsImplementation.ShipsImplementation.Ve
 
         public abstract int Weight { get; }
 
-        public abstract VehicleType TypeofVehicle { get; }
-
-        public Guid SerialNumber => Guid.NewGuid();
-
         public abstract int PassengerCount { get; }
 
         public abstract double LiftingCapacity { get; }
+        public abstract VehicleType TypeofVehicle { get; }
+
+        public Guid SerialNumber => Guid.NewGuid();
     }
 }

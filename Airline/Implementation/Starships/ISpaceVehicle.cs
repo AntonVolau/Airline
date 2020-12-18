@@ -1,9 +1,9 @@
-﻿using Airline.Implementation.Enum;
+﻿using Airline.Implementation.Enums;
 using System;
 
-namespace Airline.Implementation.DataModelsImplementation.ShipsImplementation
+namespace Airline.Implementation.Starships
 {
-    internal interface ISpaceVehicle
+    public interface ISpaceVehicle
     {
         /// <summary>
         /// Name of model

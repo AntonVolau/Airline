@@ -1,4 +1,4 @@
-﻿namespace Airline.Implementation.Enum
+﻿namespace Airline.Implementation.Enums
 {
     enum Category
     {

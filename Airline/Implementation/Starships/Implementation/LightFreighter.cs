@@ -1,15 +1,17 @@
-﻿using Airline.Implementation.Enum;
+﻿using Airline.Implementation.Enums;
 using System;
 
-namespace Airline.Implementation.DataModelsImplementation.ShipsImplementation.LightFreighters
+namespace Airline.Implementation.Starships.Implementation
 {
     class LightFreighter : ISpaceVehicle
     {
-        public virtual string ModelName { get; internal set; } = "XS Stock freighter";
+        public virtual int NumberOfCargoHolds { get; set; }
 
-        public virtual decimal MaximumFlightRange { get; internal set; } = 25000;
+        public virtual string ModelName { get; set; } = "XS Stock freighter";
 
-        public virtual decimal FuelConsumption { get; internal set; } = 6.5m;
+        public virtual decimal MaximumFlightRange { get; set; } = 25000;
+
+        public virtual decimal FuelConsumption { get; set; } = 6.5m;
 
         public virtual int PassengerCount { get; set; } = 21;
 

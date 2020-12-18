@@ -1,11 +1,10 @@
-﻿using Airline.Implementation.Airline.DataModelsImplementation.ShipsImplementation.StarCruisers;
-using Airline.Implementation.DataModelsImplementation.AirlineImplementation;
-using Airline.Implementation.DataModelsImplementation.ShipsImplementation;
-using Airline.Implementation.DataModelsImplementation.ShipsImplementation.BattleStations;
-using Airline.Implementation.DataModelsImplementation.ShipsImplementation.LightFreighters;
-using Airline.Implementation.DataModelsImplementation.ShipsImplementation.StarFighters;
+﻿using Airline.Implementation.Starships;
+using Airline.Implementation.Starships.Implementation;
+using Airline.Implementation.Starships.Implementation.StarshipSubclasses.BattleStations;
+using Airline.Implementation.Starships.Implementation.StarshipSubclasses.LightFreighters;
+using Airline.Implementation.Starships.Implementation.StarshipSubclasses.StarCruisers;
+using Airline.Implementation.Starships.Implementation.StarshipSubclasses.StarFighters;
 using System;
-using System.Collections.Generic;
 
 namespace Airline
 {
@@ -13,7 +12,7 @@ namespace Airline
     {
         static void Main()
         {
-            Airline<ISpaceVehicle> airline = new Airline<ISpaceVehicle>() // initializing our space corporation
+            var airline = new Implementation.Airline.Implementation.Airline() // initializing our space corporation
             {
                 Name = "Incom"
             };
@@ -28,11 +27,12 @@ namespace Airline
             airline.BuyShip(new Slave1()); // Buying Slave 1
             airline.BuyShip(new LightFreighter(), 2); // Buying few standart light freighters
             airline.BuyShip(new MilleniumFalcon()); // Buying legendary Millenium Falcon
+            airline.BuyShip(new UpgradedTieFighter()); // Buying upgraded Tie-fighter
 
             Console.WriteLine($"_________________General information about {airline.Name}_________________");
             Console.WriteLine($" Total vehicle count -> {airline.VehicleCount}"); // Displaying our current vehicle count
             Console.WriteLine($" Total passenger capacity -> {airline.GetSeatingCapacity()}"); // Displaying maximum passenger places
-            Console.WriteLine($" Total lifting capacity -> {airline.GetLiftingCapacity()}"); // Displaying maximum lifting capacity of all our ships combined
+            Console.WriteLine($" Total lifting capacity -> {airline.GetLiftingCapacity()} kg"); // Displaying maximum lifting capacity of all our ships combined
 
             Console.WriteLine($"_________________Ships hierarchy by flight range_________________");
             airline.AscendingSortByFlightRange(); // Sorting our vehicles by flight range from lowest to highest
@@ -40,17 +40,17 @@ namespace Airline
             {
                 Console.WriteLine($" Ship Name: '{ship.ModelName}'. Maximum flight range: {ship.MaximumFlightRange} km. Ship ID -> {ship.SerialNumber}"); // Displaying sorted list
             }
-            Console.WriteLine("Enter minimum and maximum fuel consumption values to search for ships"); // Ask for user input to return list of ships with range of fuel consumption
+            Console.WriteLine("Enter minimum and maximum fuel consumption values to search for ships"); // Asking for user input to return list of ships with range of fuel consumption
             try
             {
-                int minimumFuelConsumption = Int32.Parse(Console.ReadLine()); // minimal fuel consumption
-                int maximumFuelConsumption = Int32.Parse(Console.ReadLine()); // maximum fuel consumption
+                int minimumFuelConsumption = Int32.Parse(Console.ReadLine()); // Minimal fuel consumption
+                int maximumFuelConsumption = Int32.Parse(Console.ReadLine()); // Maximum fuel consumption
                 if (minimumFuelConsumption < 0 || maximumFuelConsumption < 0 || minimumFuelConsumption > maximumFuelConsumption)
                 {
                     throw new ArgumentException();
                 }
                 Console.WriteLine($"_________________Ships list with fuel consumption from {minimumFuelConsumption} to {maximumFuelConsumption}_________________");
-                List<ISpaceVehicle> shipsByFuelConsumption = airline.SearchByFuelConsumption(minimumFuelConsumption, maximumFuelConsumption);
+                var shipsByFuelConsumption = airline.SearchByFuelConsumption(minimumFuelConsumption, maximumFuelConsumption);
                 foreach (ISpaceVehicle ship in shipsByFuelConsumption)
                 {
                     Console.WriteLine($"Ship name -> {ship.ModelName}. Fuel consumtion per 100 parsecs -> {ship.FuelConsumption} gallons"); // Displaying list of ships via user input

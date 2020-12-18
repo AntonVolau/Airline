@@ -1,6 +1,6 @@
-﻿namespace Airline.Implementation.Enum
+﻿namespace Airline.Implementation.Enums
 {
-    enum VehicleType
+    public enum VehicleType
     {
         StarFighter,
         Starship,
